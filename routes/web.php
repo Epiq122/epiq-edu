@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\Frontend\StudentController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Frontend\InstructorDashboardController;
+use App\Http\Controllers\Frontend\StudentDashboardController;
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -13,11 +14,21 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
+//Student routes
 Route::group([
     'middleware' => ['auth:web', 'verified', 'check_role:student'], 'prefix' => 'student', 'as' => 'student.'
 ],
     function () {
-        Route::get('/dashboard', [StudentController::class])->name('dashboard');
+        Route::get('/dashboard', [StudentDashboardController::class, 'index'])->name('dashboard');
+    });
+
+
+// Instructor routes
+Route::group([
+    'middleware' => ['auth:web', 'verified', 'check_role:instructor'], 'prefix' => 'instructor', 'as' => 'instructor.'
+],
+    function () {
+        Route::get('/dashboard', [InstructorDashboardController::class, 'index'])->name('dashboard');
     });
 
 Route::get('/admin/dashboard', function () {
