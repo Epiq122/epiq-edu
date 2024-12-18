@@ -1,48 +1,7 @@
-{{--<x-guest-layout>--}}
-{{--    <form method="POST" action="{{ route('admin.password.store') }}">--}}
-{{--        @csrf--}}
-
-{{--        <!-- Password Reset Token -->--}}
-{{--        <input type="hidden" name="token" value="{{ $request->route('token') }}">--}}
-
-{{--        <!-- Email Address -->--}}
-{{--        <div>--}}
-{{--            <x-input-label for="email" :value="__('Email')"/>--}}
-{{--            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"--}}
-{{--                          :value="old('email', $request->email)" required autofocus autocomplete="username"/>--}}
-{{--            <x-input-error :messages="$errors->get('email')" class="mt-2"/>--}}
-{{--        </div>--}}
-
-{{--        <!-- Password -->--}}
-{{--        <div class="mt-4">--}}
-{{--            <x-input-label for="password" :value="__('Password')"/>--}}
-{{--            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required--}}
-{{--                          autocomplete="new-password"/>--}}
-{{--            <x-input-error :messages="$errors->get('password')" class="mt-2"/>--}}
-{{--        </div>--}}
-
-{{--        <!-- Confirm Password -->--}}
-{{--        <div class="mt-4">--}}
-{{--            <x-input-label for="password_confirmation" :value="__('Confirm Password')"/>--}}
-
-{{--            <x-text-input id="password_confirmation" class="block mt-1 w-full"--}}
-{{--                          type="password"--}}
-{{--                          name="password_confirmation" required autocomplete="new-password"/>--}}
-
-{{--            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2"/>--}}
-{{--        </div>--}}
-
-{{--        <div class="flex items-center justify-end mt-4">--}}
-{{--            <x-primary-button>--}}
-{{--                {{ __('Reset Password') }}--}}
-{{--            </x-primary-button>--}}
-{{--        </div>--}}
-{{--    </form>--}}
-{{--</x-guest-layout>--}}
-
-    <!doctype html>
+<!doctype html>
 
 <html lang="en">
+@vite('resources/js/admin/login.js')
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
@@ -101,6 +60,16 @@
                                 <input type="password" class="form-control" placeholder="Password"
                                        name="password"
                                        required autocomplete="off">
+                                <span class="input-group-text toggle-password">
+                    <a href="#" class="link-secondary" title="Show password" data-bs-toggle="tooltip"><!-- Download SVG icon from http://tabler-icons.io/i/eye -->
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                           stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                           stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path
+                              d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/><path
+                              d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6"/></svg>
+                    </a>
+
+                  </span>
                             </div>
                             <x-input-error :messages="$errors->get('password')" class="mt-2"/>
                         </div>
@@ -115,9 +84,21 @@
                                 <input type="password" class="form-control" placeholder="Confirm Password"
                                        name="password_confirmation"
                                        required autocomplete="off">
+                                <span class="input-group-text toggle-password">
+                    <a href="#" class="link-secondary" title="Show password" data-bs-toggle="tooltip"><!-- Download SVG icon from http://tabler-icons.io/i/eye -->
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                           stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                           stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path
+                              d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/><path
+                              d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6"/></svg>
+                    </a>
+
+                  </span>
                             </div>
+
                             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2"/>
                         </div>
+
 
                         <div class="form-footer">
                             <button type="submit" class="btn btn-primary w-100">Reset Password</button>
