@@ -172,7 +172,16 @@
                     <a href="#" class="dropdown-item">Feedback</a>
                     <div class="dropdown-divider"></div>
                     <a href="./settings.html" class="dropdown-item">Settings</a>
-                    <a href="./sign-in.html" class="dropdown-item">Logout</a>
+                    <a href="{{ route('admin.logout') }}"
+                       onclick="event.preventDefault();
+                               document.getElementById('logout-form').submit();"
+                       class="dropdown-item">
+                        Logout
+                    </a>
+
+                    <form id="logout-form" method="POST" action="{{ route('admin.logout') }}">
+                        @csrf
+                    </form>
                 </div>
             </div>
         </div>
